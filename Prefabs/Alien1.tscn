@@ -1,16 +1,14 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/PlayerScripts/PlayerBullet.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/bullet.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/EnemyScripts/EnemyScript.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/robot1.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 4.5
+radius = 17.0
 
-[node name="Node" type="Area2D" index="0" groups=[
-"PlayerBullets",
-]]
+[node name="Alien1" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -20,8 +18,8 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-speed = 300
-damage = 1
+HP = 2
+Speed = 75
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
@@ -34,6 +32,8 @@ texture = ExtResource( 2 )
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]
 
 rect = Rect2( -10, -10, 20, 20 )
+
+[connection signal="area_entered" from="." to="." method="_on_Area2D_area_entered"]
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
