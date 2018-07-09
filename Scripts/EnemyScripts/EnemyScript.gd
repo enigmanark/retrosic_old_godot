@@ -6,7 +6,11 @@ export(int) var Speed = 75;
 func _ready():
 	pass
 
+func _process(delta):
+	position += Vector2(-1 * Speed * delta, 0);
+
 func _on_VisibilityNotifier2D_screen_exited():
+	print("Deleting");
 	queue_free();
 
 func _on_Area2D_area_entered(area):
