@@ -48,7 +48,7 @@ bulletTimeout = 0.25
 [node name="LevelController" parent="." index="3" instance=ExtResource( 3 )]
 
 Level = 0
-Base = 8
+Base = 10
 
 [node name="GUI" parent="." index="4" instance=ExtResource( 4 )]
 

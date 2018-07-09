@@ -20,8 +20,8 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 HP = 6
 BulletType = 3
-BulletCooldown = 0.7
-Speed = 54
+BulletCooldown = 1.1
+Speed = 40
 Score = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]

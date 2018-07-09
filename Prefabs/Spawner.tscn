@@ -2,13 +2,12 @@
 
 [ext_resource path="res://Scripts/LevelController.gd" type="Script" id=1]
 
-
 [node name="Spawner" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 Level = 1
-Base = 15
-Mod = 1.2
+Base = 10
+Mod = 1.3
 
 [node name="Timer" type="Timer" parent="." index="0"]
 

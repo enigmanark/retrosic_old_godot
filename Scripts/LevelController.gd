@@ -1,8 +1,8 @@
 extends Node2D
 
 export(int) var Level = 0;
-export(int) var Base = 8;
-export(float) var Mod = 1.2;
+export(int) var Base = 10;
+export(float) var Mod = 1.3;
 var Score = 0;
 var WavesToSpawn;
 var ChanceSpawn1 = 100;
@@ -26,6 +26,11 @@ func _ready():
 	#Score
 	get_node("../GUI").get_child(0).get_child(2).get_child(1).text = "0";
 	loadLevel(1);
+
+func _process(delta):
+	if WavesToSpawn == 0 and is_level_end():
+		if(!loadLevel(Level+1)):
+			get_tree().change_scene("res://Scenes/GameOver.tscn");
 
 func loadLevel(lvl):
 	if lvl == 1:
@@ -52,12 +57,10 @@ func loadLevel(lvl):
 func setup_enemyCount():
 	#Increase enemy count dynamically based on level
 	WavesToSpawn = Base;
-	print(Base);
-	print(WavesToSpawn);
 	var currentLevel = 0;
 	#Iterate over each level and increase enemy count until we get to the right level we're on
 	while(currentLevel < Level):
-		WavesToSpawn *= 1.2;
+		WavesToSpawn *= Mod;
 		currentLevel += 1;
 	WavesToSpawn = int(WavesToSpawn);
 	print(WavesToSpawn);
@@ -143,13 +146,13 @@ func instance_destroyer():
 	destroyer.add_to_group("Enemies");
 
 func is_level_end():
-	if WavesToSpawn <= 0 and get_tree().get_nodes_in_group("Enemies").size() == 0:
+	if get_tree().get_nodes_in_group("Enemies").size() == 0:
 		return true;
 	else:
 		return false;
 
 func _on_Timer_timeout():
-	if !is_level_end():
+	if WavesToSpawn > 0:
 		var roll = rand_range(1, 100);
 		if roll <= ChanceSpawn5:
 			for i in range(5):
@@ -169,8 +172,3 @@ func _on_Timer_timeout():
 		get_node("../GUI").get_child(0).get_child(3).get_child(1).text = str(WavesToSpawn);
 		#Set wait time to random between 1 and 4 on the timer
 		get_child(0).wait_time = rand_range(1, 4);
-	else:
-		if(!loadLevel(Level+1)):
-			get_tree().change_scene("res://Scenes/GameOver.tscn");
-	
-	
