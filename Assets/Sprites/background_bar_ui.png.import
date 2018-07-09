@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprite.PNG-dd1816bc5e0521fa2fa1a1daa6b1deee.stex"
+path="res://.import/background_bar_ui.png-973e9cd1c1ade06273865866ca39fdf3.stex"
 
 [deps]
 
-source_file="res://Assets/Sprites/sprite.PNG"
-dest_files=[ "res://.import/sprite.PNG-dd1816bc5e0521fa2fa1a1daa6b1deee.stex" ]
+source_file="res://Assets/Sprites/background_bar_ui.png"
+dest_files=[ "res://.import/background_bar_ui.png-973e9cd1c1ade06273865866ca39fdf3.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

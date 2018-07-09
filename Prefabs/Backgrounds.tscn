@@ -12,16 +12,15 @@ __meta__ = {
 
 [node name="StarryBackground" type="Sprite" parent="." index="0"]
 
-position = Vector2( 236.432, 148.844 )
 texture = ExtResource( 1 )
-_sections_unfolded = [ "Transform", "Z Index" ]
+centered = false
+_sections_unfolded = [ "Offset", "Transform", "Z Index" ]
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="HillySprite" type="Sprite" parent="." index="1"]
 
-position = Vector2( -0.390045, 1.92453 )
 texture = ExtResource( 2 )
 centered = false
 script = ExtResource( 3 )
@@ -33,7 +32,7 @@ speed = 200
 
 [node name="HillySprite2" type="Sprite" parent="." index="2"]
 
-position = Vector2( 459.387, 0.732895 )
+position = Vector2( 459.387, 0 )
 texture = ExtResource( 2 )
 centered = false
 _sections_unfolded = [ "Transform", "Z Index" ]

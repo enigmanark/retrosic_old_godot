@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bullet.png-01b797d76f64f0a3fea939dd04a7ef5b.stex"
+path="res://.import/shield_bar_filled_ui.png-9e41293b6b2869d2c80d1285403cdf99.stex"
 
 [deps]
 
-source_file="res://Assets/Sprites/bullet.png"
-dest_files=[ "res://.import/bullet.png-01b797d76f64f0a3fea939dd04a7ef5b.stex" ]
+source_file="res://Assets/Sprites/shield_bar_filled_ui.png"
+dest_files=[ "res://.import/shield_bar_filled_ui.png-9e41293b6b2869d2c80d1285403cdf99.stex" ]
 
 [params]
 
