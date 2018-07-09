@@ -3,15 +3,12 @@
 [ext_resource path="res://Scripts/PlayerScripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/ship.png" type="Texture" id=2]
 
-
-
-
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 10 )
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="Area2D" index="0"]
 
 editor/display_folded = true
 position = Vector2( 16.9071, 16.172 )
@@ -24,6 +21,7 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 speed = 4
+bulletTimeout = 0.75
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
