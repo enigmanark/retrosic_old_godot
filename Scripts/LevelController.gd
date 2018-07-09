@@ -3,6 +3,7 @@ extends Node2D
 export(int) var Level = 0;
 export(int) var Base = 8;
 export(float) var Mod = 1.2;
+var Score = 0;
 var WavesToSpawn;
 var ChanceSpawn1 = 100;
 var ChanceSpawn2 = 50;
@@ -22,6 +23,7 @@ func _ready():
 	var view_port_height = get_viewport().get_visible_rect().size.y;
 	screen_height = view_port_height * camera.zoom.x;
 	screen_width =  view_port_width * camera.zoom.y;
+	#Score
 	get_node("../GUI").get_child(0).get_child(2).get_child(1).text = "0";
 	loadLevel(1);
 

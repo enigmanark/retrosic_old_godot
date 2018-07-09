@@ -19,7 +19,10 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 HP = 2
+BulletType = 1
+BulletCooldown = 1.5
 Speed = 75
+Score = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
@@ -33,8 +36,17 @@ texture = ExtResource( 2 )
 
 rect = Rect2( -10, -10, 20, 20 )
 
+[node name="Timer" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 1.5
+one_shot = false
+autostart = true
+
 [connection signal="area_entered" from="." to="." method="_on_Area2D_area_entered"]
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 

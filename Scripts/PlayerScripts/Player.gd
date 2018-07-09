@@ -25,6 +25,7 @@ func get_fire():
 	if Input.is_action_pressed("fire") and canFire:
 		var bulletScene = load("res://Prefabs/PlayerBullet.tscn");
 		var bullet = bulletScene.instance();
+		bullet.add_to_group("PlayerBullets");
 		get_parent().add_child(bullet);
 		bullet.position = Vector2(position.x, position.y);
 		canFire = false;
