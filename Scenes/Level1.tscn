@@ -44,9 +44,12 @@ z_index = 1
 _sections_unfolded = [ "Transform", "Z Index" ]
 bulletTimeout = 0.15
 
-[node name="Spawner" parent="." index="3" instance=ExtResource( 3 )]
+[node name="LevelController" parent="." index="3" instance=ExtResource( 3 )]
 
-[node name="ShieldGUI" parent="." index="4" instance=ExtResource( 4 )]
+Level = 0
+Base = 8
+
+[node name="GUI" parent="." index="4" instance=ExtResource( 4 )]
 
 margin_left = -9.0
 margin_top = -14.0

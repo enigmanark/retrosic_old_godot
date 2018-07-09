@@ -2,6 +2,7 @@ extends Area2D
 
 export(int) var HP = 2;
 export(int) var Speed = 75;
+export(int) var Score = 100;
 
 func _ready():
 	pass
