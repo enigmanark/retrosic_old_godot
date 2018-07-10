@@ -10,7 +10,6 @@ extents = Vector2( 16, 10 )
 
 [node name="Player" type="Area2D" index="0"]
 
-editor/display_folded = true
 position = Vector2( 16.9071, 16.172 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -20,6 +19,7 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
+HP = 15
 speed = 4
 bulletTimeout = 0.75
 
@@ -31,6 +31,6 @@ shape = SubResource( 1 )
 
 texture = ExtResource( 2 )
 
-[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 
 

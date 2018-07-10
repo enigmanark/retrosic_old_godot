@@ -1,13 +1,16 @@
 extends Area2D
 
+export(int) var HP = 15;
 export(int) var speed = 4;
 export(float) var bulletTimeout = 0.5;
 var bulletTimer = 0;
 var canFire = true;
 var velocity = Vector2();
+var currentHP;
 
 func _ready():
-	pass;
+	currentHP = HP;
+	update_shieldGUI();
 	
 func get_movement():
 	velocity = Vector2();
@@ -42,6 +45,19 @@ func _process(delta):
 	get_fire();
 	proc_bulletTime(delta);
 	position += velocity;
+
+#Damage player
+func _on_Player_area_entered(area):
+	if area.is_in_group("EnemyBullets"):
+		currentHP -= area.damage;
+		print(currentHP);
+		update_shieldGUI();
+		area.queue_free();
+		if(currentHP <= 0):
+			get_tree().change_scene("res://Scenes/GameOver.tscn");
+			
+func update_shieldGUI():
+	var healthDec = float(currentHP / float(HP));
+	var healthPerc = float(healthDec * 100);
+	get_parent().get_node("GUI/TopHUD/ShieldGUI/Progress").value = healthPerc;
 	
-func _on_Area2D_body_entered(body):
-	pass # replace with function body

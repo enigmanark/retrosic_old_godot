@@ -63,7 +63,6 @@ func setup_enemyCount():
 		WavesToSpawn *= Mod;
 		currentLevel += 1;
 	WavesToSpawn = int(WavesToSpawn);
-	print(WavesToSpawn);
 	
 func position_enemy(enemy):
 	enemy.position = Vector2(int(screen_width) - 1, rand_range(0, int(screen_height)));
