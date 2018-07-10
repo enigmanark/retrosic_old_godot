@@ -3,6 +3,7 @@ extends Node2D
 export(int) var Level = 0;
 export(int) var Base = 10;
 export(float) var Mod = 1.3;
+var System;
 var Score = 0;
 var WavesToSpawn;
 var ChanceSpawn1 = 100;
@@ -26,6 +27,12 @@ func _ready():
 	#Score
 	get_node("../GUI").get_child(0).get_child(2).get_child(1).text = "0";
 	loadLevel(1);
+	
+	#Determine if should disable touch controls
+	System = OS.get_name();
+	if(System != "Android"):
+		get_parent().get_node("DirPadGUI").visible = false;
+		get_parent().get_node("FireButton").visible = false;
 
 func _process(delta):
 	if WavesToSpawn == 0 and is_level_end():

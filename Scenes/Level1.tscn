@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Prefabs/Backgrounds.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Prefabs/Spawner.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Prefabs/GUI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Audio/Voltaic.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Prefabs/LevelController.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prefabs/GUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Audio/Voltaic.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Sprites/up_button.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/left_button.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/right_button.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/down_button.png" type="Texture" id=8]
+[ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Sprites/fire_button.png" type="Texture" id=10]
 
 [node name="Node" type="Node" index="0"]
 
@@ -17,7 +22,7 @@ _sections_unfolded = [ "Transform" ]
 anchor_mode = 0
 rotating = false
 current = true
-zoom = Vector2( 0.46, 0.46 )
+zoom = Vector2( 0.47, 0.48 )
 limit_left = -10000000
 limit_top = -10000000
 limit_right = 10000000
@@ -38,27 +43,18 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="Player" parent="." index="2" instance=ExtResource( 2 )]
+[node name="LevelController" parent="." index="2" instance=ExtResource( 2 )]
 
-position = Vector2( 56.1947, 166.57 )
-z_index = 1
-_sections_unfolded = [ "Transform", "Z Index" ]
-bulletTimeout = 0.25
-
-[node name="LevelController" parent="." index="3" instance=ExtResource( 3 )]
-
-Level = 0
-
-[node name="GUI" parent="." index="4" instance=ExtResource( 4 )]
+[node name="GUI" parent="." index="3" instance=ExtResource( 3 )]
 
 margin_left = -9.0
 margin_top = -14.0
 margin_right = 343.0
 margin_bottom = 40.0
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="5"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
 
-stream = ExtResource( 5 )
+stream = ExtResource( 4 )
 volume_db = 5.0
 pitch_scale = 1.0
 autoplay = true
@@ -67,33 +63,36 @@ attenuation = 1.0
 bus = "Master"
 area_mask = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="." index="6"]
+[node name="DirPadGUI" type="MarginContainer" parent="." index="5"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 7.0
-margin_top = 191.0
-margin_right = 108.0
-margin_bottom = 272.0
+margin_left = -14.0
+margin_top = 174.0
+margin_right = 158.0
+margin_bottom = 282.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Anchor" ]
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" index="0"]
+[node name="DirPad" type="VBoxContainer" parent="DirPadGUI" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 8.0
-margin_right = 101.0
-margin_bottom = 81.0
+margin_right = 172.0
+margin_bottom = 108.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -102,13 +101,32 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer" index="0"]
+[node name="UpButtonAligner" type="HBoxContainer" parent="DirPadGUI/DirPad" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 93.0
+margin_right = 164.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+
+[node name="UpButton" type="TextureButton" parent="DirPadGUI/DirPad/UpButtonAligner" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 66.0
+margin_right = 98.0
+margin_bottom = 32.0
+grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -120,6 +138,164 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
+texture_normal = ExtResource( 5 )
+_sections_unfolded = [ "Grow Direction", "Margin", "Textures" ]
+
+[node name="MiddleButtonAligner" type="HBoxContainer" parent="DirPadGUI/DirPad" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 36.0
+margin_right = 164.0
+margin_bottom = 68.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+
+[node name="LeftButton" type="TextureButton" parent="DirPadGUI/DirPad/MiddleButtonAligner" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_right = 62.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 6 )
 _sections_unfolded = [ "Textures" ]
+
+[node name="SeperatorButton" type="TextureButton" parent="DirPadGUI/DirPad/MiddleButtonAligner" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 66.0
+margin_right = 98.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+_sections_unfolded = [ "Rect" ]
+
+[node name="RightButton" type="TextureButton" parent="DirPadGUI/DirPad/MiddleButtonAligner" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 102.0
+margin_right = 134.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 7 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="DownButtonAligner" type="HBoxContainer" parent="DirPadGUI/DirPad" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 72.0
+margin_right = 164.0
+margin_bottom = 104.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+
+[node name="DownButton" type="TextureButton" parent="DirPadGUI/DirPad/DownButtonAligner" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 66.0
+margin_right = 98.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 8 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Player" parent="." index="6" instance=ExtResource( 9 )]
+
+position = Vector2( 56.1947, 166.57 )
+z_index = 1
+_sections_unfolded = [ "Transform", "Z Index" ]
+bulletTimeout = 0.25
+
+[node name="FireButton" type="TextureButton" parent="." index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 418.0
+margin_top = 203.0
+margin_right = 450.0
+margin_bottom = 235.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 10 )
+_sections_unfolded = [ "Rect", "Textures" ]
 
 
